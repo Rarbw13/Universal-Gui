@@ -1,0 +1,507 @@
+local lp = game.Players.LocalPlayer
+local me = game.Players.LocalPlayer.Name
+
+local ScareGui = Instance.new("ScreenGui")
+local MadeByTeamK00pkidd = Instance.new("Frame")
+local JGuiv1 = Instance.new("TextLabel")
+local BYK00PKIDD = Instance.new("TextLabel")
+local Scare = Instance.new("TextButton")
+local Scare_2 = Instance.new("TextButton")
+local Scare_3 = Instance.new("TextButton")
+local Scare_4 = Instance.new("TextButton")
+local Scare_5 = Instance.new("TextButton")
+local Scare_6 = Instance.new("TextButton")
+local Scare_7 = Instance.new("TextButton")
+local Scare_8 = Instance.new("TextButton")
+ 
+--Properties:
+ 
+ScareGui.Name = "ScareGui"
+ScareGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScareGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ 
+MadeByTeamK00pkidd.Name = "MadeByTeamK00pkidd"
+MadeByTeamK00pkidd.Parent = ScareGui
+MadeByTeamK00pkidd.BackgroundColor3 = Color3.fromRGB(0, 20, 0)
+MadeByTeamK00pkidd.BorderColor3 = Color3.fromRGB(0, 255, 0)
+MadeByTeamK00pkidd.Active = true
+MadeByTeamK00pkidd.Selectable = true
+MadeByTeamK00pkidd.BorderSizePixel = 4
+MadeByTeamK00pkidd.Position = UDim2.new(0.303658545, 0, 0.0934959352, 0)
+MadeByTeamK00pkidd.Size = UDim2.new(0, 376, 0, 344)
+ 
+JGuiv1.Name = "JGuiv1"
+JGuiv1.Parent = MadeByTeamK00pkidd
+JGuiv1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+JGuiv1.BackgroundTransparency = 1.000
+JGuiv1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+JGuiv1.BorderSizePixel = 0
+JGuiv1.Size = UDim2.new(0, 376, 0, 52)
+JGuiv1.Font = Enum.Font.SourceSans
+JGuiv1.Text = "Jumpscare GUI by k00pkidd v1"
+JGuiv1.TextColor3 = Color3.fromRGB(255, 255, 255)
+JGuiv1.TextScaled = true
+JGuiv1.TextSize = 14.000
+JGuiv1.TextWrapped = true
+ 
+BYK00PKIDD.Name = "BYK00PKIDD"
+BYK00PKIDD.Parent = MadeByTeamK00pkidd
+BYK00PKIDD.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BYK00PKIDD.BackgroundTransparency = 1.000
+BYK00PKIDD.BorderColor3 = Color3.fromRGB(0, 0, 0)
+BYK00PKIDD.BorderSizePixel = 0
+BYK00PKIDD.Position = UDim2.new(0, 0, 0.125, 0)
+BYK00PKIDD.Size = UDim2.new(0, 376, 0, 32)
+BYK00PKIDD.Font = Enum.Font.SourceSansItalic
+BYK00PKIDD.Text = "Made by team k00pkidd"
+BYK00PKIDD.TextColor3 = Color3.fromRGB(255, 255, 255)
+BYK00PKIDD.TextScaled = true
+BYK00PKIDD.TextSize = 14.000
+BYK00PKIDD.TextWrapped = true
+ 
+Scare.Name = "Scare"
+Scare.Parent = MadeByTeamK00pkidd
+Scare.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Scare.BorderColor3 = Color3.fromRGB(173, 0, 0)
+Scare.BorderSizePixel = 3
+Scare.Position = UDim2.new(0.0372340418, 0, 0.241279066, 0)
+Scare.Size = UDim2.new(0, 146, 0, 46)
+Scare.Font = Enum.Font.FredokaOne
+Scare.Text = "RedKidd"
+Scare.TextColor3 = Color3.fromRGB(255, 255, 255)
+Scare.TextScaled = true
+Scare.TextSize = 14.000
+Scare.TextWrapped = true
+ 
+Scare_2.Name = "Scare"
+Scare_2.Parent = MadeByTeamK00pkidd
+Scare_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Scare_2.BorderColor3 = Color3.fromRGB(173, 0, 0)
+Scare_2.BorderSizePixel = 3
+Scare_2.Position = UDim2.new(0.547872365, 0, 0.241279066, 0)
+Scare_2.Size = UDim2.new(0, 146, 0, 46)
+Scare_2.Font = Enum.Font.FredokaOne
+Scare_2.Text = "scary eye with hint"
+Scare_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Scare_2.TextScaled = true
+Scare_2.TextSize = 14.000
+Scare_2.TextWrapped = true
+ 
+Scare_3.Name = "Scare"
+Scare_3.Parent = MadeByTeamK00pkidd
+Scare_3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Scare_3.BorderColor3 = Color3.fromRGB(173, 0, 0)
+Scare_3.BorderSizePixel = 3
+Scare_3.Position = UDim2.new(0.547872365, 0, 0.433139533, 0)
+Scare_3.Size = UDim2.new(0, 146, 0, 46)
+Scare_3.Font = Enum.Font.FredokaOne
+Scare_3.Text = "void.exe"
+Scare_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+Scare_3.TextScaled = true
+Scare_3.TextSize = 14.000
+Scare_3.TextWrapped = true
+ 
+Scare_4.Name = "Scare"
+Scare_4.Parent = MadeByTeamK00pkidd
+Scare_4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Scare_4.BorderColor3 = Color3.fromRGB(173, 0, 0)
+Scare_4.BorderSizePixel = 3
+Scare_4.Position = UDim2.new(0.0372340418, 0, 0.433139533, 0)
+Scare_4.Size = UDim2.new(0, 146, 0, 46)
+Scare_4.Font = Enum.Font.FredokaOne
+Scare_4.Text = "SCARY"
+Scare_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+Scare_4.TextScaled = true
+Scare_4.TextSize = 14.000
+Scare_4.TextWrapped = true
+ 
+Scare_5.Name = "Scare"
+Scare_5.Parent = MadeByTeamK00pkidd
+Scare_5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Scare_5.BorderColor3 = Color3.fromRGB(173, 0, 0)
+Scare_5.BorderSizePixel = 3
+Scare_5.Position = UDim2.new(0.547872365, 0, 0.636627913, 0)
+Scare_5.Size = UDim2.new(0, 146, 0, 46)
+Scare_5.Font = Enum.Font.FredokaOne
+Scare_5.Text = "Allah"
+Scare_5.TextColor3 = Color3.fromRGB(255, 255, 255)
+Scare_5.TextScaled = true
+Scare_5.TextSize = 14.000
+Scare_5.TextWrapped = true
+ 
+Scare_6.Name = "Scare"
+Scare_6.Parent = MadeByTeamK00pkidd
+Scare_6.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Scare_6.BorderColor3 = Color3.fromRGB(173, 0, 0)
+Scare_6.BorderSizePixel = 3
+Scare_6.Position = UDim2.new(0.0372340418, 0, 0.636627913, 0)
+Scare_6.Size = UDim2.new(0, 146, 0, 46)
+Scare_6.Font = Enum.Font.FredokaOne
+Scare_6.Text = "void.exe 2"
+Scare_6.TextColor3 = Color3.fromRGB(255, 255, 255)
+Scare_6.TextScaled = true
+Scare_6.TextSize = 14.000
+Scare_6.TextWrapped = true
+ 
+Scare_7.Name = "Scare"
+Scare_7.Parent = MadeByTeamK00pkidd
+Scare_7.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Scare_7.BorderColor3 = Color3.fromRGB(173, 0, 0)
+Scare_7.BorderSizePixel = 3
+Scare_7.Position = UDim2.new(0.547872365, 0, 0.819767416, 0)
+Scare_7.Size = UDim2.new(0, 146, 0, 46)
+Scare_7.Font = Enum.Font.FredokaOne
+Scare_7.Text = "RED DOT SCARE"
+Scare_7.TextColor3 = Color3.fromRGB(255, 255, 255)
+Scare_7.TextScaled = true
+Scare_7.TextSize = 14.000
+Scare_7.TextWrapped = true
+ 
+Scare_8.Name = "Scare"
+Scare_8.Parent = MadeByTeamK00pkidd
+Scare_8.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Scare_8.BorderColor3 = Color3.fromRGB(173, 0, 0)
+Scare_8.BorderSizePixel = 3
+Scare_8.Position = UDim2.new(0.0372340418, 0, 0.819767416, 0)
+Scare_8.Size = UDim2.new(0, 146, 0, 46)
+Scare_8.Font = Enum.Font.FredokaOne
+Scare_8.Text = "You Are An Idiot!"
+Scare_8.TextColor3 = Color3.fromRGB(255, 255, 255)
+Scare_8.TextScaled = true
+Scare_8.TextSize = 14.000
+Scare_8.TextWrapped = true
+ 
+-- Scripts:
+ 
+local function XWTYXR_fake_script() -- Scare.LocalScript 
+	local script = Instance.new('LocalScript', Scare)
+ 
+	script.Parent.MouseButton1Click:Connect(function()
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if v.Name == me and not v.PlayerGui:FindFirstChild("Screamer") and v:FindFirstChild("PlayerGui") then
+				spawn(function()
+					local newgui = Instance.new("ScreenGui",v.PlayerGui)
+					newgui.Name = "Screamer"
+					local newimage = Instance.new("ImageLabel",newgui)
+					newimage.Image = "http://www.roblox.com/asset/?id=88357757200005"
+					newimage.Size = UDim2.new(1,1,1,1)
+					local s = Instance.new("Sound",newgui)
+					s.SoundId = "rbxassetid://6129291390"
+					s.Volume = 9999999999999999999999999999999999999
+					s.Looped = false
+					s:Play()
+					print("Screamed "..v.Name)
+					while wait(9.4) do
+ 
+						newimage.Parent:Destroy()
+ 
+					end
+				end)
+			end
+		end
+	end)
+end
+coroutine.wrap(XWTYXR_fake_script)()
+local function DVBHZ_fake_script() -- Scare_2.LocalScript 
+	local script = Instance.new('LocalScript', Scare_2)
+ 
+	script.Parent.MouseButton1Click:Connect(function()
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if v.Name == me and not v.PlayerGui:FindFirstChild("Screamer") and v:FindFirstChild("PlayerGui") then
+				spawn(function()
+					local newgui = Instance.new("ScreenGui",v.PlayerGui)
+					newgui.Name = "Tub93"
+					local newimage = Instance.new("ImageLabel",newgui)
+					newimage.Image = "http://www.roblox.com/asset/?id=12901871056"
+					newimage.Size = UDim2.new(1,1,1,1)
+					local s = Instance.new("Sound",newgui)
+					s.SoundId = "rbxassetid://6018028320"
+					s.Volume = 9
+					s.Looped = false
+					s:Play()
+					print("Screamed "..v.Name)
+					while wait(9.4) do
+ 
+						newimage.Parent:Destroy()
+ 
+					end
+				end)
+			end
+		end
+	end)
+end
+coroutine.wrap(DVBHZ_fake_script)()
+local function INOUST_fake_script() -- Scare_2.LocalScript 
+	local script = Instance.new('LocalScript', Scare_2)
+ 
+	script.Parent.MouseButton1Click:Connect(function()
+		while wait(0.1) do
+			local h = Instance.new("Hint")
+			h.Parent = game.Workspace
+			h.Text = ("TEAM K00PKIDD x TEAM P2077KING")
+			wait(0.1)
+			h.Text = ("Team K00PKIDD join TODAY!!")
+			wait(9.4)
+			h:Destroy()
+		end
+	end)
+end
+coroutine.wrap(INOUST_fake_script)()
+local function KDCE_fake_script() -- Scare_3.LocalScript 
+	local script = Instance.new('LocalScript', Scare_3)
+ 
+	script.Parent.MouseButton1Click:Connect(function()
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if v.Name == me and not v.PlayerGui:FindFirstChild("Screamer") and v:FindFirstChild("PlayerGui") then
+				spawn(function()
+					local newgui = Instance.new("ScreenGui",v.PlayerGui)
+					newgui.Name = "Screamer"
+					local newimage = Instance.new("ImageLabel",newgui)
+					newimage.Image = "http://www.roblox.com/asset/?id=120523031391952"
+					newimage.Size = UDim2.new(1,1,1,1)
+					local s = Instance.new("Sound",newgui)
+					s.SoundId = "rbxassetid://6821054463"
+					s.Volume = 9999999999999999999999999999999999999
+					s.Looped = false
+					s:Play()
+					print("Screamed "..v.Name)
+					while wait(5) do
+ 
+						newimage.Parent:Destroy()
+ 
+					end
+				end)
+			end
+		end
+	end)
+end
+coroutine.wrap(KDCE_fake_script)()
+local function NXRZ_fake_script() -- Scare_4.LocalScript 
+	local script = Instance.new('LocalScript', Scare_4)
+ 
+	script.Parent.MouseButton1Click:Connect(function()
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if v.Name == me and not v.PlayerGui:FindFirstChild("Screamer") and v:FindFirstChild("PlayerGui") then
+				spawn(function()
+					local newgui = Instance.new("ScreenGui",v.PlayerGui)
+					newgui.Name = "Screamer"
+					local newimage = Instance.new("ImageLabel",newgui)
+					newimage.Image = "http://www.roblox.com/asset/?id=15828334218"
+					newimage.Size = UDim2.new(1,1,1,1)
+					local s = Instance.new("Sound",newgui)
+					s.SoundId = "rbxassetid://11984351"
+					s.Volume = 9999999999999999999999999999999999999
+					s.Looped = false
+					s.Pitch = 2
+					s:Play()
+					print("Screamed "..v.Name)
+					while wait(9.4) do
+ 
+						newimage.Parent:Destroy()
+ 
+					end
+				end)
+			end
+		end
+	end)
+end
+coroutine.wrap(NXRZ_fake_script)()
+local function GECY_fake_script() -- Scare_5.LocalScript 
+	local script = Instance.new('LocalScript', Scare_5)
+ 
+	script.Parent.MouseButton1Click:Connect(function()
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if v.Name == me and not v.PlayerGui:FindFirstChild("Screamer") and v:FindFirstChild("PlayerGui") then
+				spawn(function()
+					local newgui = Instance.new("ScreenGui",v.PlayerGui)
+					newgui.Name = "Screamer"
+					local newimage = Instance.new("ImageLabel",newgui)
+					newimage.Image = "http://www.roblox.com/asset/?id=9942689210"
+					newimage.Size = UDim2.new(1,1,1,1)
+					while wait(5) do
+						newimage.Visible = false
+						wait(0.1)
+						newimage.Visible = true
+					end
+					local s = Instance.new("Sound",newgui)
+					s.SoundId = "rbxassetid://8909754006"
+					s.Volume = 9999999999999999999999999999999999999
+					s.Looped = false
+					s:Play()
+					print("Screamed "..v.Name)
+					while wait(4) do
+ 
+						newimage.Parent:Destroy()
+ 
+					end
+				end)
+			end
+		end
+	end)
+end
+coroutine.wrap(GECY_fake_script)()
+local function XFOLZPL_fake_script() -- Scare_5.LocalScript 
+	local script = Instance.new('LocalScript', Scare_5)
+ 
+	script.Parent.MouseButton1Click:Connect(function()
+		local s = Instance.new("Sound")
+		s.SoundId = "rbxassetid://97432399914335"
+		s.Parent = game.Workspace
+		s.Volume = 9
+		s.Looped = false
+		s:Play()
+		wait(9.4)
+		s:Destroy()
+	end)
+end
+coroutine.wrap(XFOLZPL_fake_script)()
+local function HKKBA_fake_script() -- Scare_6.LocalScript 
+	local script = Instance.new('LocalScript', Scare_6)
+ 
+	script.Parent.MouseButton1Click:Connect(function()
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if v.Name == me and not v.PlayerGui:FindFirstChild("Screamer") and v:FindFirstChild("PlayerGui") then
+				spawn(function()
+					local newgui = Instance.new("ScreenGui",v.PlayerGui)
+					newgui.Name = "VOID.EXE"
+					local newimage = Instance.new("ImageLabel",newgui)
+					newimage.Image = "http://www.roblox.com/asset/?id=73906370891935"
+					newimage.Size = UDim2.new(1,1,1,1)
+					local s = Instance.new("Sound",newgui)
+					s.SoundId = "rbxassetid://11984351"
+					s.Volume = 4
+					s.Looped = true
+					s.Pitch = 0.5
+					s:Play()
+					print("Screamed "..v.Name)
+					while wait(9) do
+ 
+						newimage.Parent:Destroy()
+ 
+					end
+				end)
+			end
+		end
+	end)
+end
+coroutine.wrap(HKKBA_fake_script)()
+local function XMQYLCK_fake_script() -- Scare_7.LocalScript 
+	local script = Instance.new('LocalScript', Scare_7)
+ 
+	script.Parent.MouseButton1Click:Connect(function()
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if v.Name == me and not v.PlayerGui:FindFirstChild("Screamer") and v:FindFirstChild("PlayerGui") then
+				spawn(function()
+					local newgui = Instance.new("ScreenGui",v.PlayerGui)
+					newgui.Name = "Screamer"
+					local newimage = Instance.new("ImageLabel",newgui)
+					newimage.Image = "http://www.roblox.com/asset/?id=15799721694"
+					wait(2)
+					newimage.Image = "http://www.roblox.com/asset/?id=122119567025676"
+					newimage.Size = UDim2.new(1,1,1,1)
+					local s = Instance.new("Sound",newgui)
+					s.SoundId = "rbxassetid://6129291390"
+					s.Volume = 1
+					s.Looped = true
+					s:Play()
+					print("Screamed "..v.Name)
+					while wait(9.4) do
+ 
+						newimage.Parent:Destroy()
+ 
+					end
+				end)
+			end
+		end
+	end)
+end
+coroutine.wrap(XMQYLCK_fake_script)()
+local function OOSHJT_fake_script() -- Scare_8.LocalScript 
+	local script = Instance.new('LocalScript', Scare_8)
+ 
+	script.Parent.MouseButton1Click:Connect(function()
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if v.Name == me and not v.PlayerGui:FindFirstChild("Screamer") and v:FindFirstChild("PlayerGui") then
+				spawn(function()
+					local newgui = Instance.new("ScreenGui",v.PlayerGui)
+					newgui.Name = "Screamer"
+					local newimage = Instance.new("ImageLabel",newgui)
+					newimage.Image = "http://www.roblox.com/asset/?id=14683917883"
+					wait(1)
+					newimage.Image = "http://www.roblox.com/asset/?id=7148209019"
+					newimage.Size = UDim2.new(1,1,1,1)
+					local s = Instance.new("Sound",newgui)
+					s.SoundId = "rbxassetid://3200130016"
+					s.Volume = 9999999999999999999999999999999999999
+					s.Looped = true
+					s:Play()
+					print("Screamed "..v.Name)
+					while wait(5.248) do
+ 
+						newimage.Parent:Destroy()
+ 
+					end
+				end)
+			end
+		end
+	end)
+end
+coroutine.wrap(OOSHJT_fake_script)()
+local function POXI_fake_script() -- MadeByTeamK00pkidd
+	local script = Instance.new('LocalScript', MadeByTeamK00pkidd)
+ 
+	local UserInputService = game:GetService("UserInputService")
+	local runService = (game:GetService("RunService"));
+ 
+	local gui = script.Parent
+ 
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+ 
+	function Lerp(a, b, m)
+		return a + (b - a) * m
+	end;
+ 
+	local lastMousePos
+	local lastGoalPos
+	local DRAG_SPEED = (8); -- // The speed of the UI darg.
+	function Update(dt)
+		if not (startPos) then return end;
+		if not (dragging) and (lastGoalPos) then
+			gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, lastGoalPos.X.Offset, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, lastGoalPos.Y.Offset, dt * DRAG_SPEED))
+			return 
+		end;
+ 
+		local delta = (lastMousePos - UserInputService:GetMouseLocation())
+		local xGoal = (startPos.X.Offset - delta.X);
+		local yGoal = (startPos.Y.Offset - delta.Y);
+		lastGoalPos = UDim2.new(startPos.X.Scale, xGoal, startPos.Y.Scale, yGoal)
+		gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, xGoal, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, yGoal, dt * DRAG_SPEED))
+	end;
+ 
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+			lastMousePos = UserInputService:GetMouseLocation()
+ 
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+ 
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+ 
+	runService.Heartbeat:Connect(Update)
+end
+coroutine.wrap(POXI_fake_script)()
