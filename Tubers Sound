@@ -1,0 +1,74 @@
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "TubersSoundGui"
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "MainFrame"
+mainFrame.Size = UDim2.new(0, 250, 0, 150)
+mainFrame.Position = UDim2.new(0, 20, 0.5, -75)
+mainFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+mainFrame.BorderSizePixel = 2
+mainFrame.BorderColor3 = Color3.fromRGB(80, 80, 80)
+mainFrame.Active = true
+mainFrame.Draggable = true
+mainFrame.Parent = screenGui
+
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 30)
+title.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+title.Text = "Tubers Sound Hub"
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 18
+title.Parent = mainFrame
+
+local soundId = "rbxassetid://6129291390"
+
+local btnLoop = Instance.new("TextButton")
+btnLoop.Name = "LoopButton"
+btnLoop.Size = UDim2.new(0, 200, 0, 40)
+btnLoop.Position = UDim2.new(0.5, -100, 0, 45)
+btnLoop.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+btnLoop.Text = "Loop Tubers Sound"
+btnLoop.TextColor3 = Color3.fromRGB(255, 255, 255)
+btnLoop.Font = Enum.Font.SourceSans
+btnLoop.TextSize = 16
+btnLoop.Parent = mainFrame
+
+btnLoop.MouseButton1Click:Connect(function()
+    local oldSound = game.Workspace:FindFirstChild("TubersAudioLoop")
+    if oldSound then oldSound:Destroy() end
+    
+    local s = Instance.new("Sound")
+    s.Name = "TubersAudioLoop"
+    s.SoundId = soundId
+    s.Volume = 1
+    s.Looped = true
+    s.Parent = game.Workspace
+    s:Play()
+end)
+
+local btnOnce = Instance.new("TextButton")
+btnOnce.Name = "OnceButton"
+btnOnce.Size = UDim2.new(0, 200, 0, 40)
+btnOnce.Position = UDim2.new(0.5, -100, 0, 95)
+btnOnce.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+btnOnce.Text = "Tubers Sound (No Loop)"
+btnOnce.TextColor3 = Color3.fromRGB(255, 255, 255)
+btnOnce.Font = Enum.Font.SourceSans
+btnOnce.TextSize = 16
+btnOnce.Parent = mainFrame
+
+btnOnce.MouseButton1Click:Connect(function()
+    local s = Instance.new("Sound")
+    s.Name = "TubersAudioOnce"
+    s.SoundId = soundId
+    s.Volume = 1
+    s.Looped = false
+    s.Parent = game.Workspace
+    s:Play()
+    
+    s.Ended:Connect(function()
+        s:Destroy()
+    end)
+end)
