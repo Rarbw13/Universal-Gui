@@ -42,7 +42,7 @@ btnLoop.MouseButton1Click:Connect(function()
     local s = Instance.new("Sound")
     s.Name = "TubersAudioLoop"
     s.SoundId = soundId
-    s.Volume = 1
+    s.Volume = 99999999999999999999999999999999
     s.Looped = true
     s.Parent = game.Workspace
     s:Play()
@@ -63,7 +63,7 @@ btnOnce.MouseButton1Click:Connect(function()
     local s = Instance.new("Sound")
     s.Name = "TubersAudioOnce"
     s.SoundId = soundId
-    s.Volume = 1
+    s.Volume = 99999999999999999999999999999999
     s.Looped = false
     s.Parent = game.Workspace
     s:Play()
