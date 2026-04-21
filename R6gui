@@ -113,6 +113,7 @@ local lScripts = {
 	["Tubers Sound"] = "https://raw.githubusercontent.com/Rarbw13/Universal-Gui/refs/heads/main/Tubers%20Sound",
 	["Ring Parts"] = "loadstring(game:HttpGet('https://raw.githubusercontent.com/Lukashub-coder/super-ring/refs/heads/main/Super%20ring!!'))()",
 	["SystemBroken"] = "https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/script",
+    ["Server Side Executor"] = "https://raw.githubusercontent.com/Rarbw13/Universal-Gui/refs/heads/main/ServerSide",
 }
 
 _G.nc = false
