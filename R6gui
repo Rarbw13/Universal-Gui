@@ -153,7 +153,7 @@ for name, link in pairs(lScripts) do
 					if v:IsA("Sky") or v:IsA("Atmosphere") then v:Destroy() end
 				end
 				local s = Instance.new("Sky", Lighting)
-				local id = "rbxassetid://6008860960"
+				local id = "rbxassetid://9422866248"
 				s.SkyboxBk = id s.SkyboxDn = id s.SkyboxFt = id
 				s.SkyboxLf = id s.SkyboxRt = id s.SkyboxUp = id
 				Lighting.ClockTime = 12
