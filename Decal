@@ -1,0 +1,11 @@
+local target = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") or workspace:FindFirstChildOfClass("Part")
+
+if target then
+    local faces = Enum.NormalId:GetEnumItems()
+    for _, face in pairs(faces) do
+        local d = Instance.new("Decal")
+        d.Texture = "rbxassetid://76915324782857"
+        d.Face = face
+        d.Parent = target
+    end
+end
