@@ -1,0 +1,21 @@
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local function BringVisual()
+    local character = LocalPlayer.Character
+    if not character or not character:FindFirstChild("HumanoidRootPart") then return end
+    
+    local targetPos = character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -5) -- 5 stud di depan lo
+
+    for _, player in pairs(Players:GetPlayers()) do
+        if player ~= LocalPlayer then
+            local targetChar = player.Character
+            if targetChar and targetChar:FindFirstChild("HumanoidRootPart") then
+                -- Hanya pindah di client lo
+                targetChar.HumanoidRootPart.CFrame = targetPos
+            end
+        end
+    end
+end
+
+BringVisual()
