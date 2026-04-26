@@ -1,0 +1,31 @@
+-- Delta / Mobile Executor Script: Kill All to Void
+-- Target: Everyone except the executor user
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local TeleportY = -5000 -- Jarak jatuh ke void
+
+local function SendToVoid()
+    for _, player in pairs(Players:GetPlayers()) do
+        -- Pastikan tidak mengirim diri sendiri
+        if player ~= LocalPlayer then
+            local character = player.Character
+            if character then
+                local hrp = character:FindFirstChild("HumanoidRootPart")
+                local humanoid = character:FindFirstChildOfClass("Humanoid")
+                
+                if hrp and humanoid and humanoid.Health > 0 then
+                    -- Bypass beberapa anti-cheat dasar dengan CFrame + Velocity
+                    hrp.CFrame = CFrame.new(hrp.Position.X, TeleportY, hrp.Position.Z)
+                    hrp.AssemblyLinearVelocity = Vector3.new(0, -1000, 0)
+                end
+            end
+        end
+    end
+end
+
+-- Eksekusi
+SendToVoid()
+
+-- Notifikasi (Opsional - Biar kelihatan keren di UI lo)
+print("Project Execution: All targets sent to void.")
