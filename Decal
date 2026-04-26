@@ -1,11 +1,25 @@
-local target = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") or workspace:FindFirstChildOfClass("Part")
+local decalId = "rbxassetid://136955276476949"
 
-if target then
-    local faces = Enum.NormalId:GetEnumItems()
-    for _, face in pairs(faces) do
-        local d = Instance.new("Decal")
-        d.Texture = "rbxassetid://76915324782857"
-        d.Face = face
-        d.Parent = target
+for _, obj in pairs(workspace:GetDescendants()) do
+    if obj:IsA("BasePart") then
+        local faces = Enum.NormalId:GetEnumItems()
+        for _, face in pairs(faces) do
+            local d = Instance.new("Decal")
+            d.Texture = decalId
+            d.Face = face
+            d.Parent = obj
+        end
     end
 end
+
+game.DescendantAdded:Connect(function(obj)
+    if obj:IsA("BasePart") then
+        local faces = Enum.NormalId:GetEnumItems()
+        for _, face in pairs(faces) do
+            local d = Instance.new("Decal")
+            d.Texture = decalId
+            d.Face = face
+            d.Parent = obj
+        end
+    end
+end)
