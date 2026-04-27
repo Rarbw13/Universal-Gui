@@ -1,0 +1,243 @@
+local player = game.Players.LocalPlayer
+local CoreGui = game:GetService("CoreGui")
+local HttpService = game:GetService("HttpService")
+
+if CoreGui:FindFirstChild("Tunfoos94_GUI_V4") then 
+    CoreGui.Tunfoos94_GUI_V4:Destroy() 
+end
+
+local ScreenGui = Instance.new("ScreenGui", CoreGui)
+ScreenGui.Name = "Tunfoos94_GUI_V4"
+
+local Main = Instance.new("Frame", ScreenGui)
+Main.Size = UDim2.new(0, 550, 0, 350)
+Main.Position = UDim2.new(0.5, -275, 0.5, -175)
+Main.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+Main.BorderSizePixel = 0
+Main.Active = true
+Main.Draggable = true
+
+local Border = Instance.new("UIStroke", Main)
+Border.Thickness = 3
+Border.Color = Color3.fromRGB(255, 0, 150)
+Border.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+
+local Corner = Instance.new("UICorner", Main)
+Corner.CornerRadius = UDim.new(0, 10)
+
+local Title = Instance.new("TextLabel", Main)
+Title.Size = UDim2.new(0, 300, 0, 50)
+Title.Position = UDim2.new(0, 20, 0, 5)
+Title.BackgroundTransparency = 1
+Title.Text = "c00lF00zs Gui"
+Title.TextColor3 = Color3.fromRGB(255, 0, 150)
+Title.Font = Enum.Font.FredokaOne
+Title.TextSize = 28
+Title.TextXAlignment = "Left"
+
+local TabBar = Instance.new("Frame", Main)
+TabBar.Size = UDim2.new(1, -40, 0, 40)
+TabBar.Position = UDim2.new(0, 20, 0, 55)
+TabBar.BackgroundTransparency = 1
+local TabLayout = Instance.new("UIListLayout", TabBar)
+TabLayout.FillDirection = "Horizontal"
+TabLayout.Padding = UDim.new(0, 5)
+TabLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+
+local Container = Instance.new("Frame", Main)
+Container.Size = UDim2.new(1, -40, 1, -110)
+Container.Position = UDim2.new(0, 20, 0, 100)
+Container.BackgroundTransparency = 1
+
+local tabs = {}
+
+local function CreateTab(name, isDefault)
+    local Page = Instance.new("ScrollingFrame", Container)
+    Page.Size = UDim2.new(1, 0, 1, 0)
+    Page.BackgroundTransparency = 1
+    Page.Visible = isDefault or false
+    Page.ScrollBarThickness = 4
+    Page.BorderSizePixel = 0
+    Page.AutomaticCanvasSize = Enum.AutomaticSize.Y
+    
+    local pLayout = Instance.new("UIListLayout", Page)
+    pLayout.Padding = UDim.new(0, 8)
+    pLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    pLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    
+    local TabBtn = Instance.new("TextButton", TabBar)
+    TabBtn.Size = UDim2.new(0.2, -4, 1, 0)
+    TabBtn.BackgroundColor3 = Color3.fromRGB(30, 0, 30)
+    TabBtn.Text = name
+    TabBtn.TextColor3 = isDefault and Color3.fromRGB(255, 0, 150) or Color3.new(1, 1, 1)
+    TabBtn.Font = Enum.Font.SourceSansBold
+    TabBtn.TextSize = 14
+    Instance.new("UICorner", TabBtn)
+    Instance.new("UIStroke", TabBtn).Color = Color3.fromRGB(255, 0, 150)
+
+    tabs[name] = {Btn = TabBtn, Page = Page}
+
+    TabBtn.MouseButton1Click:Connect(function()
+        for _, t in pairs(tabs) do
+            t.Page.Visible = false
+            t.Btn.TextColor3 = Color3.new(1, 1, 1)
+        end
+        Page.Visible = true
+        TabBtn.TextColor3 = Color3.fromRGB(255, 0, 150)
+    end)
+    return Page
+end
+
+local function NewBtn(parent, text, callback)
+    local btn = Instance.new("TextButton", parent)
+    btn.Size = UDim2.new(0.9, 0, 0, 40)
+    btn.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    btn.Text = text
+    btn.TextColor3 = Color3.new(1, 1, 1)
+    btn.Font = Enum.Font.SourceSansBold
+    btn.TextSize = 16
+    Instance.new("UICorner", btn)
+    local s = Instance.new("UIStroke", btn)
+    s.Color = Color3.fromRGB(255, 0, 150)
+    s.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    
+    btn.MouseButton1Click:Connect(function()
+        pcall(callback)
+    end)
+    return btn
+end
+
+local Home = CreateTab("Home", true)
+local ScriptTab = CreateTab("Script")
+local ExploitTab = CreateTab("Exploit")
+local AdminTab = CreateTab("Admin")
+local ExecTab = CreateTab("Executor")
+
+local ProfileFrame = Instance.new("ImageLabel", Home)
+ProfileFrame.Size = UDim2.new(0, 120, 0, 120)
+ProfileFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+ProfileFrame.Image = "rbxthumb://type=AvatarHeadShot&id="..player.UserId.."&w=420&h=420"
+Instance.new("UICorner", ProfileFrame).CornerRadius = UDim.new(1, 0)
+Instance.new("UIStroke", ProfileFrame).Color = Color3.fromRGB(255, 0, 150)
+
+local NameTag = Instance.new("TextLabel", Home)
+NameTag.Size = UDim2.new(0.8, 0, 0, 35)
+NameTag.BackgroundColor3 = Color3.fromRGB(30, 10, 40)
+NameTag.TextColor3 = Color3.new(1, 1, 1)
+NameTag.Font = Enum.Font.SourceSansBold
+NameTag.TextSize = 16
+NameTag.Text = "Name: "..player.Name
+Instance.new("UICorner", NameTag)
+
+local LocationTag = Instance.new("TextLabel", Home)
+LocationTag.Size = UDim2.new(0.8, 0, 0, 35)
+LocationTag.BackgroundColor3 = Color3.fromRGB(30, 10, 40)
+LocationTag.TextColor3 = Color3.new(1, 1, 1)
+LocationTag.Font = Enum.Font.SourceSansBold
+LocationTag.TextSize = 16
+Instance.new("UICorner", LocationTag)
+
+task.spawn(function()
+    local success, response = pcall(function() return game:HttpGet("http://ip-api.com/json/") end)
+    local data = success and HttpService:JSONDecode(response) or {}
+    LocationTag.Text = "Region: "..(data.country or "Indonesia").." 🇮🇩"
+end)
+
+NewBtn(ScriptTab, "John Doe", function() loadstring(game:HttpGet("https://rawscripts.net/raw/Client-Replication-John-doe-up-by-gojohdkaisenkt-34198"))() end)
+NewBtn(ScriptTab, "Skybox", function() local s=Instance.new("Sky",game:GetService("Lighting")); s.SkyboxBk="rbxassetid://136955276476949"; s.SkyboxDn="rbxassetid://9422866248"; s.SkyboxFt="rbxassetid://136955276476949"; s.SkyboxLf="rbxassetid://136955276476949"; s.SkyboxRt="rbxassetid://136955276476949"; s.SkyboxUp="rbxassetid://8408806737" end)
+NewBtn(ScriptTab, "Fly Gui V1", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Rarbw13/Universal-Gui/refs/heads/main/Fly%20Gui%20v1"))() end)
+NewBtn(ScriptTab, "R6 gui", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Rarbw13/Universal-Gui/refs/heads/main/R6gui"))() end)
+NewBtn(ScriptTab, "Decal'Lag'", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Rarbw13/Universal-Gui/refs/heads/main/Decal"))() end)
+NewBtn(ScriptTab, "Speed 100", function() game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100 end)
+NewBtn(ScriptTab, "Speed 16", function() game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16 end)
+NewBtn(ScriptTab, "Jump Power 200", function() game.Players.LocalPlayer.Character.Humanoid.JumpPower = 200 end)
+NewBtn(ScriptTab, "Jump Power 50", function() game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50 end)
+NewBtn(ScriptTab, "GhostHub", function() loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Ghost-hub-key-bypass-123299"))() end)
+NewBtn(ScriptTab, "Invisible Toggle", function() loadstring(game:HttpGet('https://pastebin.com/raw/3Rnd9rHf'))() end)
+NewBtn(ScriptTab, "Polaria", function() loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Polaria-113867"))() end)
+NewBtn(ScriptTab, "c00lkidd executor", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/rtlsmonk/c00lgui-made-by-rtls_a1-on-discord/refs/heads/main/have-fun"))() end)
+
+NewBtn(ExploitTab, "Kill All", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Rarbw13/Universal-Gui/refs/heads/main/Kill%20All"))() end)
+NewBtn(ExploitTab, "Bring All 'Client'", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Rarbw13/Universal-Gui/refs/heads/main/Bring%20All"))() end)
+NewBtn(ExploitTab, "Spawn All Item", function() 
+    for _, item in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do 
+        if item:IsA("Tool") or item:IsA("HopperBin") then 
+            item.Parent = game.Players.LocalPlayer.Backpack 
+        end 
+    end 
+end)
+
+NewBtn(AdminTab, "Kick You", function() game:GetService("Players").LocalPlayer:Kick("Disconnected or KICKED") end)
+NewBtn(AdminTab, "Ban You 'Fake'", function() game:GetService("Players").LocalPlayer:Kick("Not real ban :)") end)
+NewBtn(AdminTab, "Reset You", function() game.Players.LocalPlayer.Character:BreakJoints() end)
+
+ExecTab:ClearAllChildren()
+
+local ExecScroll = Instance.new("ScrollingFrame", ExecTab)
+ExecScroll.Size = UDim2.new(1, 0, 0, 180)
+ExecScroll.Position = UDim2.new(0, 0, 0, 0)
+ExecScroll.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+ExecScroll.ScrollBarThickness = 4
+ExecScroll.AutomaticCanvasSize = Enum.AutomaticSize.Y
+Instance.new("UICorner", ExecScroll)
+Instance.new("UIStroke", ExecScroll).Color = Color3.fromRGB(255, 0, 150)
+
+local ExecInput = Instance.new("TextBox", ExecScroll)
+ExecInput.Size = UDim2.new(1, -10, 1, 0)
+ExecInput.Position = UDim2.new(0, 5, 0, 0)
+ExecInput.BackgroundTransparency = 1
+ExecInput.PlaceholderText = "Made by Rabrw14 on YouTube"
+ExecInput.Text = ""
+ExecInput.TextColor3 = Color3.new(1, 1, 1)
+ExecInput.ClearTextOnFocus = false
+ExecInput.MultiLine = true
+ExecInput.TextXAlignment = "Left"
+ExecInput.TextYAlignment = "Top"
+ExecInput.TextSize = 14
+ExecInput.AutomaticSize = Enum.AutomaticSize.Y
+
+local ExecuteBtn = Instance.new("TextButton", ExecTab)
+ExecuteBtn.Size = UDim2.new(0.48, 0, 0, 45)
+ExecuteBtn.Position = UDim2.new(0, 0, 0, 190)
+ExecuteBtn.BackgroundColor3 = Color3.fromRGB(30, 0, 30)
+ExecuteBtn.Text = "Execute"
+ExecuteBtn.TextColor3 = Color3.new(1, 1, 1)
+ExecuteBtn.Font = Enum.Font.SourceSansBold
+ExecuteBtn.TextSize = 18
+Instance.new("UICorner", ExecuteBtn)
+Instance.new("UIStroke", ExecuteBtn).Color = Color3.fromRGB(255, 0, 150)
+
+local ClearBtn = Instance.new("TextButton", ExecTab)
+ClearBtn.Size = UDim2.new(0.48, 0, 0, 45)
+ClearBtn.Position = UDim2.new(0.52, 0, 0, 190)
+ClearBtn.BackgroundColor3 = Color3.fromRGB(30, 0, 30)
+ClearBtn.Text = "Clear"
+ClearBtn.TextColor3 = Color3.new(1, 1, 1)
+ClearBtn.Font = Enum.Font.SourceSansBold
+ClearBtn.TextSize = 18
+Instance.new("UICorner", ClearBtn)
+Instance.new("UIStroke", ClearBtn).Color = Color3.fromRGB(255, 0, 150)
+
+ExecuteBtn.MouseButton1Click:Connect(function() pcall(function() loadstring(ExecInput.Text)() end) end)
+ClearBtn.MouseButton1Click:Connect(function() ExecInput.Text = "" end)
+
+local Close = Instance.new("TextButton", Main)
+Close.Size = UDim2.new(0, 30, 0, 30)
+Close.Position = UDim2.new(1, -40, 0, 10)
+Close.BackgroundColor3 = Color3.fromRGB(150, 0, 50)
+Close.Text = "X"
+Close.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", Close)
+
+local Open = Instance.new("TextButton", ScreenGui)
+Open.Size = UDim2.new(0, 160, 0, 35)
+Open.Position = UDim2.new(0, 10, 0.5, 0)
+Open.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+Open.Text = "Tunfoos94 GUI: Open"
+Open.TextColor3 = Color3.fromRGB(255, 0, 150)
+Open.Visible = false
+Instance.new("UICorner", Open)
+Instance.new("UIStroke", Open).Color = Color3.fromRGB(255, 0, 150)
+
+Close.MouseButton1Click:Connect(function() Main.Visible = false Open.Visible = true end)
+Open.MouseButton1Click:Connect(function() Main.Visible = true Open.Visible = false end)
