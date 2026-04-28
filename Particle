@@ -1,0 +1,19 @@
+local function applyParticle(char)
+    local head = char:WaitForChild("Head", 5)
+    if head then
+        local p = Instance.new("ParticleEmitter", head)
+        p.Texture = "http://www.roblox.com/asset/?id=94985586062793"
+        p.Rate = 200
+        p.Speed = NumberRange.new(5)
+        p.Lifetime = NumberRange.new(2)
+    end
+end
+
+for _, v in pairs(game.Players:GetPlayers()) do
+    if v.Character then applyParticle(v.Character) end
+    v.CharacterAdded:Connect(applyParticle)
+end
+
+game.Players.PlayerAdded:Connect(function(plr)
+    plr.CharacterAdded:Connect(applyParticle)
+end)
