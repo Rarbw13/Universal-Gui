@@ -1,0 +1,52 @@
+local range = 1000
+local player = game:GetService("Players").LocalPlayer
+local isActive = false
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "ControlGUI"
+gui.Parent = game.CoreGui
+
+local toggleButton = Instance.new("TextButton")
+toggleButton.Size = UDim2.new(0, 100, 0, 50)
+toggleButton.Position = UDim2.new(0.5, -50, 0.9, -30)
+toggleButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+toggleButton.Text = "ON"
+toggleButton.Font = Enum.Font.SourceSansBold
+toggleButton.TextSize = 20
+toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+toggleButton.Parent = gui
+
+toggleButton.MouseButton1Click:Connect(function()
+    isActive = not isActive
+    if isActive then
+        toggleButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+        toggleButton.Text = "ON"
+    else
+        toggleButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+        toggleButton.Text = "OFF"
+    end
+end)
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    if isActive then
+        local players = game.Players:GetPlayers()
+        for i = 1, #players do
+            local otherPlayer = players[i]
+            if otherPlayer ~= player then
+                local character = otherPlayer.Character
+                if character then
+                    local tool = player.Character and player.Character:FindFirstChildOfClass("Tool")
+                    if tool and tool:FindFirstChild("Handle") then
+                        tool:Activate()
+                        for _, part in next, character:GetChildren() do
+                            if part:IsA("BasePart") then
+                                firetouchinterest(tool.Handle, part, 0)
+                                firetouchinterest(tool.Handle, part, 1)
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)
