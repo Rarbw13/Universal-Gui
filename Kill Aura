@@ -1,48 +1,71 @@
-local range = 1000
-local player = game:GetService("Players").LocalPlayer
-local isActive = false
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
 
-local gui = Instance.new("ScreenGui")
-gui.Name = "ControlGUI"
-gui.Parent = game.CoreGui
+local Config = {
+    Range = 1000000,
+    Enabled = false,
+    Username = "unknown6789041"
+}
 
-local toggleButton = Instance.new("TextButton")
-toggleButton.Size = UDim2.new(0, 100, 0, 50)
-toggleButton.Position = UDim2.new(0.5, -50, 0.9, -30)
-toggleButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-toggleButton.Text = "ON"
-toggleButton.Font = Enum.Font.SourceSansBold
-toggleButton.TextSize = 20
-toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-toggleButton.Parent = gui
+local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
+ScreenGui.Name = "C00lKidd_Aura"
 
-toggleButton.MouseButton1Click:Connect(function()
-    isActive = not isActive
-    if isActive then
-        toggleButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-        toggleButton.Text = "ON"
+local MainBtn = Instance.new("TextButton", ScreenGui)
+MainBtn.Size = UDim2.new(0, 120, 0, 45)
+MainBtn.Position = UDim2.new(0.5, -60, 0.85, 0)
+MainBtn.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+MainBtn.Text = "OFF"
+MainBtn.TextColor3 = Color3.fromRGB(255, 0, 0)
+MainBtn.Font = Enum.Font.GothamBold
+MainBtn.TextSize = 14
+Instance.new("UICorner", MainBtn).CornerRadius = UDim.new(0, 8)
+Instance.new("UIStroke", MainBtn).Color = Color3.fromRGB(255, 0, 0)
+
+MainBtn.MouseButton1Click:Connect(function()
+    Config.Enabled = not Config.Enabled
+    if Config.Enabled then
+        MainBtn.Text = "ON"
+        MainBtn.TextColor3 = Color3.fromRGB(0, 255, 0)
+        MainBtn.UIStroke.Color = Color3.fromRGB(0, 255, 0)
     else
-        toggleButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-        toggleButton.Text = "OFF"
+        MainBtn.Text = "OFF"
+        MainBtn.TextColor3 = Color3.fromRGB(255, 0, 0)
+        MainBtn.UIStroke.Color = Color3.fromRGB(255, 0, 0)
     end
 end)
 
-game:GetService("RunService").RenderStepped:Connect(function()
-    if isActive then
-        local players = game.Players:GetPlayers()
-        for i = 1, #players do
-            local otherPlayer = players[i]
-            if otherPlayer ~= player then
-                local character = otherPlayer.Character
-                if character then
-                    local tool = player.Character and player.Character:FindFirstChildOfClass("Tool")
-                    if tool and tool:FindFirstChild("Handle") then
-                        tool:Activate()
-                        for _, part in next, character:GetChildren() do
-                            if part:IsA("BasePart") then
-                                firetouchinterest(tool.Handle, part, 0)
-                                firetouchinterest(tool.Handle, part, 1)
-                            end
+local function GetWeapon()
+    local char = LocalPlayer.Character
+    if not char then return nil end
+    return char:FindFirstChildOfClass("Tool")
+end
+
+RunService.PostSimulation:Connect(function()
+    if not Config.Enabled then return end
+    
+    local tool = GetWeapon()
+    if not tool or not tool:FindFirstChild("Handle") then return end
+    
+    local myChar = LocalPlayer.Character
+    if not myChar or not myChar:FindFirstChild("HumanoidRootPart") then return end
+    
+    for _, target in pairs(Players:GetPlayers()) do
+        if target ~= LocalPlayer and target.Character then
+            local char = target.Character
+            local hum = char:FindFirstChildOfClass("Humanoid")
+            local root = char:FindFirstChild("HumanoidRootPart")
+            
+            if hum and hum.Health > 0 and root then
+                local dist = (myChar.HumanoidRootPart.Position - root.Position).Magnitude
+                
+                if dist <= Config.Range then
+                    tool:Activate()
+                    for _, part in pairs(char:GetChildren()) do
+                        if part:IsA("BasePart") then
+                            firetouchinterest(tool.Handle, part, 0)
+                            task.wait()
+                            firetouchinterest(tool.Handle, part, 1)
                         end
                     end
                 end
