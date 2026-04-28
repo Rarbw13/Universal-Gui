@@ -67,7 +67,7 @@ Scare.BorderSizePixel = 3
 Scare.Position = UDim2.new(0.0372340418, 0, 0.241279066, 0)
 Scare.Size = UDim2.new(0, 146, 0, 46)
 Scare.Font = Enum.Font.FredokaOne
-Scare.Text = "RedKidd"
+Scare.Text = "Tunfoos"
 Scare.TextColor3 = Color3.fromRGB(255, 255, 255)
 Scare.TextScaled = true
 Scare.TextSize = 14.000
@@ -183,7 +183,7 @@ local function XWTYXR_fake_script() -- Scare.LocalScript
 					local newgui = Instance.new("ScreenGui",v.PlayerGui)
 					newgui.Name = "Screamer"
 					local newimage = Instance.new("ImageLabel",newgui)
-					newimage.Image = "http://www.roblox.com/asset/?id=88357757200005"
+					newimage.Image = "http://www.roblox.com/asset/?id=136955276476949"
 					newimage.Size = UDim2.new(1,1,1,1)
 					local s = Instance.new("Sound",newgui)
 					s.SoundId = "rbxassetid://6129291390"
