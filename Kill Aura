@@ -3,9 +3,8 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = Players.LocalPlayer
 
 local Config = {
-    Range = 1000000,
-    Enabled = false,
-    Username = "unknown6789041"
+    Range = 1000, 
+    Enabled = false
 }
 
 local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
@@ -19,55 +18,55 @@ MainBtn.Text = "OFF"
 MainBtn.TextColor3 = Color3.fromRGB(255, 0, 0)
 MainBtn.Font = Enum.Font.GothamBold
 MainBtn.TextSize = 14
-Instance.new("UICorner", MainBtn).CornerRadius = UDim.new(0, 8)
-Instance.new("UIStroke", MainBtn).Color = Color3.fromRGB(255, 0, 0)
+local Corner = Instance.new("UICorner", MainBtn)
+Corner.CornerRadius = UDim.new(0, 8)
+local Stroke = Instance.new("UIStroke", MainBtn)
+Stroke.Color = Color3.fromRGB(255, 0, 0)
+Stroke.Thickness = 2
 
 MainBtn.MouseButton1Click:Connect(function()
     Config.Enabled = not Config.Enabled
     if Config.Enabled then
         MainBtn.Text = "ON"
         MainBtn.TextColor3 = Color3.fromRGB(0, 255, 0)
-        MainBtn.UIStroke.Color = Color3.fromRGB(0, 255, 0)
+        Stroke.Color = Color3.fromRGB(0, 255, 0)
     else
         MainBtn.Text = "OFF"
         MainBtn.TextColor3 = Color3.fromRGB(255, 0, 0)
-        MainBtn.UIStroke.Color = Color3.fromRGB(255, 0, 0)
+        Stroke.Color = Color3.fromRGB(255, 0, 0)
     end
 end)
 
-local function GetWeapon()
-    local char = LocalPlayer.Character
-    if not char then return nil end
-    return char:FindFirstChildOfClass("Tool")
+local function Kill(target)
+    local tool = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Tool")
+    if tool and tool:FindFirstChild("Handle") then
+        tool:Activate()
+        for _, part in ipairs(target:GetChildren()) do
+            if part:IsA("BasePart") then
+                firetouchinterest(tool.Handle, part, 0)
+                firetouchinterest(tool.Handle, part, 1)
+            end
+        end
+    end
 end
 
-RunService.PostSimulation:Connect(function()
+RunService.Heartbeat:Connect(function()
     if not Config.Enabled then return end
     
-    local tool = GetWeapon()
-    if not tool or not tool:FindFirstChild("Handle") then return end
-    
     local myChar = LocalPlayer.Character
-    if not myChar or not myChar:FindFirstChild("HumanoidRootPart") then return end
+    local myRoot = myChar and myChar:FindFirstChild("HumanoidRootPart")
+    if not myRoot then return end
     
-    for _, target in pairs(Players:GetPlayers()) do
-        if target ~= LocalPlayer and target.Character then
-            local char = target.Character
-            local hum = char:FindFirstChildOfClass("Humanoid")
-            local root = char:FindFirstChild("HumanoidRootPart")
+    for _, targetPlayer in ipairs(Players:GetPlayers()) do
+        if targetPlayer ~= LocalPlayer and targetPlayer.Character then
+            local tChar = targetPlayer.Character
+            local tRoot = tChar:FindFirstChild("HumanoidRootPart")
+            local tHum = tChar:FindFirstChildOfClass("Humanoid")
             
-            if hum and hum.Health > 0 and root then
-                local dist = (myChar.HumanoidRootPart.Position - root.Position).Magnitude
-                
+            if tRoot and tHum and tHum.Health > 0 then
+                local dist = (myRoot.Position - tRoot.Position).Magnitude
                 if dist <= Config.Range then
-                    tool:Activate()
-                    for _, part in pairs(char:GetChildren()) do
-                        if part:IsA("BasePart") then
-                            firetouchinterest(tool.Handle, part, 0)
-                            task.wait()
-                            firetouchinterest(tool.Handle, part, 1)
-                        end
-                    end
+                    Kill(tChar)
                 end
             end
         end
