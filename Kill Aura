@@ -3,7 +3,7 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = Players.LocalPlayer
 
 local Config = {
-    Range = 1000, 
+    Range = 2000, 
     Enabled = false
 }
 
