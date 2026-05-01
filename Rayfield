@@ -1,0 +1,49 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Slap Hub",
+   LoadingTitle = "Loading...",
+   LoadingSubtitle = "Loading Slap Hub",
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil,
+      FileName = "Config"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "",
+      RememberJoins = true
+   },
+   KeySystem = false,
+})
+
+local MainTab = Window:CreateTab("Main", 4483362458)
+
+local Button1 = MainTab:CreateButton({
+   Name = "Give all Gear",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/Rarbw13/Universal-Gui/refs/heads/main/Give%20all%20item%20and%20Part"))()
+      Rayfield:Notify({
+         Title = "Notification",
+         Content = "Loaded!!",
+         Duration = 5,
+         Image = 4483362458,
+      })
+   end,
+})
+
+local Button2 = MainTab:CreateButton({
+   Name = "Slap All (Experimental)",
+   Callback = function()
+      -- Memanggil script luar
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/yusufmustofa251-boop/Pros-JS-SS/refs/heads/main/Rayfield%20--%20Trial%20Hub"))()
+      
+      -- Notifikasi diperbaiki di sini
+      Rayfield:Notify({
+         Title = "Notification",
+         Content = "Script executed, but it might not work.",
+         Duration = 5,
+         Image = 4483362458,
+      })
+   end,
+})
