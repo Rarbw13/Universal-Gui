@@ -1,0 +1,126 @@
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local Workspace = game:GetService("Workspace")
+local LocalPlayer = Players.LocalPlayer
+
+local function validate(char)
+    return char and char:FindFirstChild("HumanoidRootPart")
+end
+
+local function executeGhostTouch()
+    if not validate(LocalPlayer.Character) then return end
+    local root = LocalPlayer.Character.HumanoidRootPart
+    
+    local parts = {}
+    for _, v in pairs(Workspace:GetDescendants()) do
+        if v:IsA("BasePart") and v:FindFirstChildWhichIsA("TouchTransmitter") then
+            if not v:IsDescendantOf(LocalPlayer.Character) then
+                table.insert(parts, v)
+            end
+        end
+    end
+
+    for i = 1, #parts do
+        local target = parts[i]
+        if target and target.Parent then
+            pcall(function()
+                firetouchinterest(root, target, 0)
+                firetouchinterest(root, target, 1)
+            end)
+        end
+        if i % 10 == 0 then task.wait() end
+    end
+end
+
+local function scanAndInteract()
+    for _, obj in pairs(Workspace:GetDescendants()) do
+        if obj:IsA("ProximityPrompt") then
+            pcall(function()
+                fireproximityprompt(obj)
+            end)
+        elseif obj:IsA("ClickDetector") then
+            pcall(function()
+                fireclickdetector(obj)
+            end)
+        end
+    end
+end
+
+local function applyBypass()
+    local success, err = pcall(function()
+        executeGhostTouch()
+        scanAndInteract()
+    end)
+end
+
+local function heavyLogicLoop()
+    local counter = 0
+    while task.wait(0.5) do
+        counter = counter + 1
+        if not validate(LocalPlayer.Character) then 
+            repeat task.wait() until validate(LocalPlayer.Character)
+        end
+        
+        applyBypass()
+        
+        if counter >= 100 then
+            counter = 0
+            collectgarbage("collect")
+        end
+    end
+end
+
+local function initOptimizedPulse()
+    local connection
+    connection = RunService.Heartbeat:Connect(function()
+        if not validate(LocalPlayer.Character) then return end
+        
+        local activeRoot = LocalPlayer.Character.HumanoidRootPart
+        local detectionRadius = 50
+        
+        for _, p in pairs(Workspace:GetDescendants()) do
+            if p:IsA("BasePart") and p:FindFirstChildWhichIsA("TouchTransmitter") then
+                local dist = (activeRoot.Position - p.Position).Magnitude
+                if dist < detectionRadius then
+                    firetouchinterest(activeRoot, p, 0)
+                    firetouchinterest(activeRoot, p, 1)
+                end
+            end
+        end
+    end)
+end
+
+task.spawn(function()
+    heavyLogicLoop()
+end)
+
+task.spawn(function()
+    initOptimizedPulse()
+end)
+
+local function finalValidationLayer()
+    local checkInterval = 2
+    while true do
+        task.wait(checkInterval)
+        local character = LocalPlayer.Character
+        if character then
+            local hum = character:FindFirstChildOfClass("Humanoid")
+            if hum and hum.Health > 0 then
+                applyBypass()
+            end
+        end
+    end
+end
+
+task.spawn(finalValidationLayer)
+
+local meta = {
+    _status = "Active",
+    _version = "1.0.0",
+    _owner = "Team k00lkidd",
+    _power = 100
+}
+
+if meta._status == "Active" then
+    print(meta._owner .. " System Running")
+end
