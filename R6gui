@@ -115,7 +115,7 @@ local lScripts = {
 	["Universal Wallhop"] = "https://rawscripts.net/raw/Universal-Script-Universal-Wallhop-Script-123263",
 	["FE k00pkidd"] = "https://raw.githubusercontent.com/Rarbw13/Universal-Gui/refs/heads/main/k00pkiddGUI",
 	["Tubers Sound"] = "https://raw.githubusercontent.com/Rarbw13/Universal-Gui/refs/heads/main/Tubers%20Sound",
-	["Ring Parts"] = "loadstring(game:HttpGet('https://raw.githubusercontent.com/Lukashub-coder/super-ring/refs/heads/main/Super%20ring!!'))()",
+	["Ring Parts"] = "https://raw.githubusercontent.com/Lukashub-coder/super-ring/refs/heads/main/Super%20ring!!'))()",
 	["SystemBroken"] = "https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/script",
 }
 
