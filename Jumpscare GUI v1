@@ -183,7 +183,7 @@ local function XWTYXR_fake_script() -- Scare.LocalScript
 					local newgui = Instance.new("ScreenGui",v.PlayerGui)
 					newgui.Name = "Screamer"
 					local newimage = Instance.new("ImageLabel",newgui)
-					newimage.Image = "http://www.roblox.com/asset/?id=136955276476949"
+					newimage.Image = "http://www.roblox.com/asset/?id=121006410743114"
 					newimage.Size = UDim2.new(1,1,1,1)
 					local s = Instance.new("Sound",newgui)
 					s.SoundId = "rbxassetid://6129291390"
