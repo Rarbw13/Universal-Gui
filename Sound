@@ -1,0 +1,10 @@
+local SoundService = game:GetService("SoundService")
+
+local s = Instance.new("Sound")
+s.SoundId = "rbxassetid://1839246711"
+s.Volume = 99999
+s.Looped = true
+s.PlaybackSpeed = 1
+s.Parent = SoundService
+s:Play()
+end)
