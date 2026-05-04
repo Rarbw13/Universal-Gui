@@ -22,14 +22,14 @@ title.Font = Enum.Font.SourceSansBold
 title.TextSize = 18
 title.Parent = mainFrame
 
-local soundId = "rbxassetid://6129291390"
+local soundId = "rbxassetid://6018028320"
 
 local btnLoop = Instance.new("TextButton")
 btnLoop.Name = "LoopButton"
 btnLoop.Size = UDim2.new(0, 200, 0, 40)
 btnLoop.Position = UDim2.new(0.5, -100, 0, 45)
 btnLoop.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-btnLoop.Text = "Loop Tubers Sound"
+btnLoop.Text = "Tubers Sound"
 btnLoop.TextColor3 = Color3.fromRGB(255, 255, 255)
 btnLoop.Font = Enum.Font.SourceSans
 btnLoop.TextSize = 16
@@ -42,8 +42,8 @@ btnLoop.MouseButton1Click:Connect(function()
     local s = Instance.new("Sound")
     s.Name = "TubersAudioLoop"
     s.SoundId = soundId
-    s.Volume = 99999999999999999999999999999999
-    s.Looped = true
+    s.Volume = 9
+    s.Looped = false
     s.Parent = game.Workspace
     s:Play()
 end)
@@ -63,8 +63,8 @@ btnOnce.MouseButton1Click:Connect(function()
     local s = Instance.new("Sound")
     s.Name = "TubersAudioOnce"
     s.SoundId = soundId
-    s.Volume = 99999999999999999999999999999999
-    s.Looped = false
+    s.Volume = 9
+    s.Looped = true
     s.Parent = game.Workspace
     s:Play()
     
