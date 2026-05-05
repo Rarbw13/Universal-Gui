@@ -1,5 +1,3 @@
---c00lclan gui v2 by Elvis Gaming, v1 by c00lkiddking
---Services
 local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
 local PlayerGui = Player:WaitForChild("PlayerGui")
@@ -2073,6 +2071,10 @@ end, "General", "Slight differences from infiniteyield admin")
 FunctionManager:register("Drift Car", function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/AstraOutlight/my-scripts/refs/heads/main/fe%20car%20v3"))()
 end, "Fun", "Invisible Car :O")
+
+FunctionManager:register("Gui fly", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Rarbw13/Universal-Gui/refs/heads/main/Fly%20Gui%20v1"))()
+end, "Fun", "Gui fly v1")
 
 
 --init
