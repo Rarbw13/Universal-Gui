@@ -2072,10 +2072,6 @@ FunctionManager:register("Drift Car", function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/AstraOutlight/my-scripts/refs/heads/main/fe%20car%20v3"))()
 end, "Fun", "Invisible Car :O")
 
-FunctionManager:register("Gui fly", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Rarbw13/Universal-Gui/refs/heads/main/Fly%20Gui%20v1"))()
-end, "Fun", "Gui fly v1")
-
 
 --init
 updateGrid()
