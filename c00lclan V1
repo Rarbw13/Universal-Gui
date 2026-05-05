@@ -1949,6 +1949,12 @@ end, "Utility", "Credits to the original maker!")
 FunctionManager:register("Fling GUI", function()
 	loadstring(game:HttpGet("https://pastebin.com/raw/VynRhxJV", true))()
 end, "Troll", "Credits to the original maker!")
+FunctionManager:register("Infinity Yield", function()
+    loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Infinity-Yield-94242"))()
+end, "General", "Simple admin commands classic!")
+FunctionManager:register("Nameless Admin", function()
+    loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Nameless-admin-v250-script-87765"))()
+end, "General", "better then Infinite Yield")
 
 
 
