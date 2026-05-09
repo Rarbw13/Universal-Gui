@@ -1,0 +1,38 @@
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local Character = Player.Character or Player.CharacterAdded:Wait()
+local HRP = Character:FindFirstChild("HumanoidRootPart")
+
+if not HRP then
+    print("Error: No HumanoidRootPart found.")
+    return
+end
+
+local closestPlayer = nil
+local shortestDistance = math.huge
+
+for _, otherPlayer in ipairs(Players:GetPlayers()) do
+    if otherPlayer ~= Player and otherPlayer.Character then
+        local otherRoot = otherPlayer.Character:FindFirstChild("HumanoidRootPart")
+        if otherRoot then
+            local distance = (otherRoot.Position - HRP.Position).Magnitude
+            if distance < shortestDistance then
+                shortestDistance = distance
+                closestPlayer = otherPlayer
+            end
+        end
+    end
+end
+
+if closestPlayer and closestPlayer.Character then
+    local targetRoot = closestPlayer.Character:FindFirstChild("HumanoidRootPart")
+    if targetRoot then
+        local behindPosition = targetRoot.CFrame.Position - (targetRoot.CFrame.LookVector * 3)
+        local newCFrame = CFrame.new(behindPosition, targetRoot.Position) 
+        
+        HRP.CFrame = newCFrame
+        print("Teleported behind: " .. closestPlayer.Name)
+    end
+else
+    print("Error: No nearby player found.")
+end
