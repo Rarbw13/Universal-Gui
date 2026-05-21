@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlight Key System - Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            width: 360px;
+            position: relative;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+            text-align: center;
+        }
+
+        /* Wrapper untuk Text Key dan Tombol Copy */
+        .key-wrapper {
+            position: relative;
+            background-color: #2a2a2a;
+            padding: 20px 15px 15px 15px;
+            border-radius: 8px;
+            border: 1px solid #3a3a3a;
+            margin-bottom: 25px;
+        }
+
+        /* Tombol Copy di Atas Kanan Teks */
+        .btn-copy {
+            position: absolute;
+            top: 5px;
+            right: 8px;
+            background: none;
+            border: none;
+            color: #3498db;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .btn-copy:hover {
+            color: #2980b9;
+        }
+
+        /* Teks Key (Bukan Input Box & Gak Bisa Diubah) */
+        .key-text {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            color: #2ecc71;
+            word-break: break-all;
+            user-select: all; /* Biar gampang kalau mau di-block manual */
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* Timer Area */
+        .timer-container {
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+        }
+
+        .timer-label {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+
+        .countdown-timer {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e74c3c;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Your Access Key</h2>
+        
+        <div class="key-wrapper">
+            <button class="btn-copy" onclick="copyKey()">Copy</button>
+            <span class="key-text" id="generated-key">Loading Key...</span>
+        </div>
+
+        <div class="timer-container">
+            <div class="timer-label">Key Expiration Time:</div>
+            <div class="countdown-timer" id="24h-timer">24:00:00</div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Fungsi buat generate 45 karakter acak dari list yang lu minta
+        function generateRandomKey(length) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz12345678910';
+            let result = 'Free_'; // Awalan sesuai request lu
+            const charactersLength = characters.length;
+            
+            // Karena udah kepotong 'Free_' (5 karakter), kita sisa generate 40 karakter lagi biar pas 45
+            for (let i = 0; i < 40; i++) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
+        }
+
+        // Tampilkan key acak pas halaman dibuka
+        const keyElement = document.getElementById('generated-key');
+        const finalKey = generateRandomKey(45);
+        keyElement.innerText = finalKey;
+
+        // 2. Fungsi Copy ke Clipboard
+        function copyKey() {
+            navigator.clipboard.writeText(finalKey).then(() => {
+                const copyBtn = document.querySelector('.btn-copy');
+                copyBtn.innerText = 'Copied!';
+                copyBtn.style.color = '#2ecc71';
+                
+                // Balikin tulisan jadi 'Copy' setelah 2 detik
+                setTimeout(() => {
+                    copyBtn.innerText = 'Copy';
+                    copyBtn.style.color = '#3498db';
+                }, 2000);
+            }).catch(err => {
+                alert('Gagal copy text: ', err);
+            });
+        }
+
+        // 3. Sistem Timer 24 Jam Akurat (Menggunakan hitungan detik)
+        let totalSeconds = 24 * 60 * 60; // 24 jam dalam detik
+        const timerDisplay = document.getElementById('24h-timer');
+
+        const countdown = setInterval(() => {
+            totalSeconds--;
+
+            if (totalSeconds >= 0) {
+                let hours = Math.floor(totalSeconds / 3600);
+                let minutes = Math.floor((totalSeconds % 3600) / 60);
+                let seconds = totalSeconds % 60;
+
+                // Format biar selalu 2 digit (misal: 09:05:01)
+                hours = hours < 10 ? '0' + hours : hours;
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                timerDisplay.innerText = `${hours}:${minutes}:${seconds}`;
+            } else {
+                clearInterval(countdown);
+                timerDisplay.innerText = "EXPIRED";
+                timerDisplay.style.color = "#7f8c8d";
+                keyElement.innerText = "KEY EXPIRED - PLEASE RE-AUTH";
+                keyElement.style.color = "#c0392b";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
